@@ -10,5 +10,12 @@
 ## 8 表格
 ## 9 代码
 ## 10 流程图
-	```flow
-st
+```flow
+st=>start: 开始
+op=>operation: My Operation
+cond=>condition: Yes or No?
+e=>end
+st->op->cond
+cond(yes)->e
+cond(no)->op
+&```
