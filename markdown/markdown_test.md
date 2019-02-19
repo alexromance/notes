@@ -12,3 +12,4 @@
 `#include <stdio.h>`
 ## 10 流程图
 **github工具不支持流程图显示**
+```st=>start: start
