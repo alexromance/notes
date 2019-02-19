@@ -12,7 +12,3 @@
 `#include <stdio.h>`
 ## 10 流程图
 **github工具不支持流程图显示**
-```flow
-st=>start: start
-e=>end: end
-```
