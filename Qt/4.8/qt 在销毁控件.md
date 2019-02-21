@@ -1,4 +1,8 @@
-```
+```language
+    QObject *sends = QObject::sender();
+    qDebug()<< sends <<"this is dialog_auto_test";
+    sends->deleteLater();
+    sends = nullptr;
 
 ```
 
