@@ -1,3 +1,4 @@
+**注意此方法仅限使用powershell， 如果是cmd，使用ren 即可**
 ```
 get-childItem 'D:\For PS' *.txt | rename-item -newname { $_.name -replace '\.txt','.html' }
 
