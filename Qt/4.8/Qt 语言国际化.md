@@ -3,7 +3,7 @@
 ```c++
 QObject::tr("低")
 ```
-其中需要注意的是此函数返回的是QString类型，如果接受者是char，清进行相应的转换，参考QString转换为char。
+其中需要注意的是此函数返回的是QString类型，如果接受者是char，清进行相应的转换，参考QString转换为char
 **2 lupdate生成ts文件**
 需要在.pro文件中加入如下
 ```c++
@@ -16,7 +16,7 @@ lupdate HI3520D.pro -codecfortr utf-8 -ts AVM_EN.ts AVM_CN.ts
 ```
 **需要注意的是必须使用-codecfortr 指定编码格式，否则出现乱码无法进行编辑**
 **3 linguist进行翻译**
-对生成的ts文件使用linguist进行翻译，直接使用linguist 打开文件进行翻译即可。或者可以直接用vim打开文件，用类似xml的格式进行改写。
+对生成的ts文件使用linguist进行翻译，直接使用linguist 打开文件进行翻译即可。或者可以直接用vim打开文件，用类似xml的格式进行改写
 **4 lrelease发布翻译**
 ```shell
  lrelease AVM_EN.ts -qm AVM_EN.qm
@@ -30,7 +30,7 @@ lupdate HI3520D.pro -codecfortr utf-8 -ts AVM_EN.ts AVM_CN.ts
 //    tsor.load("AVM_CN.qm");
     app.installTranslator(&tsor);
 ```
-注意代码中第三行的路径是与指定的位置相关，每次重新生成qm文件后都需要重新编译pro
+注意代码中第三行的路径是与指定的位置相关，每次重新生成qm文件后都需要重新编译pro工程
 
 
 
