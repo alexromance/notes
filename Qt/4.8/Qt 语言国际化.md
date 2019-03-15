@@ -30,6 +30,7 @@ lupdate HI3520D.pro -codecfortr utf-8 -ts AVM_EN.ts AVM_CN.ts
 //    tsor.load("AVM_CN.qm");
     app.installTranslator(&tsor);
 ```
+注意代码中第三行的路径是与指定的位置相关，每次重新生成qm文件后都需要重新编译pro
 
 
 
