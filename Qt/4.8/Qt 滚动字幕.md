@@ -6,4 +6,15 @@ qt字幕滚动是用来处理大量英文的显示和按钮来服务的，一共
     qpushbutton_dialog_auto_test_head_left->setMaximumWidth(275);
     qpushbutton_dialog_auto_test_head_left->setMinimumWidth(275);
 ```
-**2 **
+**2 构造一个QTimer**
+构造一个QTimer用来定时给控件的文本进行刷新，定时器超时时间设置为200-300ms之间，此处重点说明超时槽函数
+```c++
+    static int pos = 0;
+    if(pos > m_str_head.length())
+        pos = 0;
+    qpushbutton_dialog_auto_test_head_left->setText(m_str_head.mid(pos) + m_str_head.left(pos));
+    pos++;
+```
+**需要注意的是mid和left函数的先后位置不可颠倒，必须如上设置，否则没有滚动效果**
+**3 **
+
