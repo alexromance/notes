@@ -22,6 +22,8 @@ lupdate HI3520D.pro -codecfortr utf-8 -ts AVM_EN.ts AVM_CN.ts
 
 
 **3 linguist进行翻译**
+
+
 对生成的ts文件使用linguist进行翻译，直接使用linguist 打开文件进行翻译即可。或者可以直接用vim打开文件，用类似xml的格式进行改写
 
 
@@ -32,6 +34,7 @@ lupdate HI3520D.pro -codecfortr utf-8 -ts AVM_EN.ts AVM_CN.ts
 
 
 **5 main函数改写**
+
 将上一步生成的qm文件拷贝到指定位置，然后在main文件中改写代码
 ```c++
     QApplication app(argc, argv);
