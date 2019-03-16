@@ -1,5 +1,6 @@
 qt字幕滚动是用来处理大量英文的显示和按钮来服务的，一共分为4步
 
+
 **1 构造一个QString**
 构造一个QString用来给qlabel或者qpushbutton来设置text。需要注意的是，qlabel默认居左显示，qpushbutton默认居中显示，需要根据目标显示效果分别对两者进行align的重新设置，此处button需要居左显示，故代码如下：
 ```c++
@@ -8,6 +9,7 @@ qt字幕滚动是用来处理大量英文的显示和按钮来服务的，一共
     qpushbutton_dialog_auto_test_head_left->setMinimumWidth(275);
 ```
 *需要注意的是把这个控件的宽度给定，否则无法实现滚动效果*
+
 
 **2 构造一个QTimer**
 构造一个QTimer用来定时给控件的文本进行刷新，定时器超时时间设置为200-300ms之间，此处重点说明超时槽函数
@@ -23,6 +25,8 @@ void dialog_auto_test::on_strhead_scroll()
 }
 ```
 *需要注意的是mid和left函数的先后位置不可颠倒，必须如上设置，否则没有滚动效果*
+
+
 **3 重写eventFilter函数**
 ```c++
 .h 文件
@@ -48,10 +52,14 @@ bool dialog_auto_test::eventFilter(QObject *watched, QEvent *event)
 }
 ```
 *需要注意的是，此处必须有返回值，且是QDialog还是QWidget根据此时继承与哪个基类进行改写*
+
+
 **4 安装eventFilter**
 ```c++
 qpushbutton_dialog_auto_test_head_left->installEventFilter(this);
 ```
+
+
 **5 滚动效果预览**
 ```c++
 ui->label->setText(m_labelTitle.mid(pos)+
