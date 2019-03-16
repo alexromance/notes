@@ -16,5 +16,30 @@ qt字幕滚动是用来处理大量英文的显示和按钮来服务的，一共
     pos++;
 ```
 **需要注意的是mid和left函数的先后位置不可颠倒，必须如上设置，否则没有滚动效果**
-**3 **
+**3 重写eventFilter函数**
+```c++
+.h 文件
+bool eventFilter(QObject *,QEvent *) override;    //注意这里
+.cpp 文件
+bool dialog_auto_test::eventFilter(QObject *watched, QEvent *event)
+{
+    if(watched == qpushbutton_dialog_auto_test_head_left)
+    {
+        if(event->type() == QEvent::FocusIn)
+        {
+            qDebug()<<"qpushbutton_dialog_auto_test_head_left in";
+            m_qtimer->start(200);
+
+        }
+        else if(event->type() == QEvent::FocusOut)
+        {
+            m_qtimer->stop();
+            qpushbutton_dialog_auto_test_head_left->setText(m_str_head);
+        }
+    }
+    return QDialog::eventFilter( watched, event);
+}
+```
+**需要注意的是，此处必须右返回值，且QDialog还是QWidget是根据此时继承与哪个基类**
+
 
