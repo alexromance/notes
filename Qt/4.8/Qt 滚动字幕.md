@@ -20,6 +20,7 @@ qt字幕滚动是用来处理大量英文的显示和按钮来服务的，一共
 ```c++
 .h 文件
 bool eventFilter(QObject *,QEvent *) override;    //注意这里
+
 .cpp 文件
 bool dialog_auto_test::eventFilter(QObject *watched, QEvent *event)
 {
@@ -29,7 +30,6 @@ bool dialog_auto_test::eventFilter(QObject *watched, QEvent *event)
         {
             qDebug()<<"qpushbutton_dialog_auto_test_head_left in";
             m_qtimer->start(200);
-
         }
         else if(event->type() == QEvent::FocusOut)
         {
@@ -40,6 +40,25 @@ bool dialog_auto_test::eventFilter(QObject *watched, QEvent *event)
     return QDialog::eventFilter( watched, event);
 }
 ```
-**需要注意的是，此处必须右返回值，且QDialog还是QWidget是根据此时继承与哪个基类**
+**需要注意的是，此处必须有返回值，且是QDialog还是QWidget根据此时继承与哪个基类进行改写**
+**4 安装eventFilter**
+
+
+**5 滚动效果预览**
+```c++
+ui->label->setText(m_labelTitle.mid(pos)+
+     m_labelTitle.left(pos));
+
+     ui->label_2->setText(m_labelTitle.right(pos)+
+    m_labelTitle.left(m_labelTitle.length()-pos));
+
+    ui->label_3->setText(m_labelTitle.left(pos));
+--------------------- 
+作者：ISmileLi 
+来源：CSDN 
+原文：https://blog.csdn.net/toby54king/article/details/78636704 
+版权声明：本文为博主原创文章，转载请附上博文链接！
+```
+![20171126123454054.gif](0)
 
 
