@@ -1,0 +1,3 @@
+qt字幕滚动是用来处理大量英文的显示和按钮来服务的，一共分为 步
+**1 构造一个QString**
+构造一个QString用来给qlabel或者qpushbutton来设置text。需要注意的是，qlabel默认居左显示，qpushbutton默认居中显示，需要
