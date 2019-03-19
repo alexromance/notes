@@ -11,6 +11,4 @@ win+x+A
 ```language
 cscript "C:\Program Files\Microsoft Office\Office16\ospp.vbs" /dstatus
 ```
-
-
-![捕获.PNG](1)
+![捕获.PNG](0)
