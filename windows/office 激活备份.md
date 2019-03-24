@@ -11,4 +11,5 @@ win+x+A
 ```language
 cscript "C:\Program Files\Microsoft Office\Office16\ospp.vbs" /dstatus
 ```
-![title](https://i.loli.net/2019/03/24/5c96fb576f9c7.png)
+
+![title](../.local/static/2019/2/0/捕获.1553398817756.PNG)
