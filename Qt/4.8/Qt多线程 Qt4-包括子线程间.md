@@ -86,6 +86,7 @@ connect(tasks, SIGNAL(signal_usb_flash_list()),this, SLOT(on_usb_flash_list()));
 ![title](../../.local/static/2019/2/0/20180525165537440.1553403428453.png)
 
 **子线程和子线程**
+此处子线程和子线程我主要说明两种，一种是两个子线程都在主线程中进行
 # 2 Q_INVOKABLE与invokeMethod
 
 # 3 事件驱动
