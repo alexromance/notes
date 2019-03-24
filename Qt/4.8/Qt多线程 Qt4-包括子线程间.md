@@ -97,7 +97,50 @@ connect(tasks, SIGNAL(signal_usb_flash_list()),this, SLOT(on_usb_flash_list()));
     qthread_back->start();
 
 ```
-此方法中qthread_back和tasks间就是典型的两个子线程进行了通信，然而在近期的项目中需要的不是这么简单的子线程通信，因为不可能所有需要进行通信
+此方法中qthread_back和tasks间就是典型的两个子线程进行了通信，然而在近期的项目中需要的不是这么简单的子线程通信，因为不可能所有需要进行通信的子线程都在主线程进行初始化，这个很明显是不可能的，所以需要使用如下的方式：
+```c++
+
+#ifndef GLOBAL_SET_H
+#define GLOBAL_SET_H
+
+#include <QObject>
+#include <QMutex>
+#include <QStringList>
+#include <QReadWriteLock>
+
+#include "common_sys_struct.h"
+class common_sys_config : public QObject
+{
+    Q_OBJECT
+public:
+    static  common_sys_config   *get_inst();
+    static  QReadWriteLock      *get_lock();
+    static  QReadWriteLock      *get_vdec_lock();
+    void    send_test();
+
+private:
+    explicit                    common_sys_config(QObject *parent = nullptr);
+    static common_sys_config    *m_globalset;
+    static QMutex               m_mutex;
+
+    //唤醒键flag的读写锁
+    static QReadWriteLock       *m_global_rwlock;
+
+    //解码播放部分读写锁
+    static QReadWriteLock       *m_global_vdec_rwlock;
+
+Q_INVOKABLE void comm_test();
+
+signals:
+    void    signal_common_sys_test();
+public slots:
+};
+#endif // GLOBAL_SET_H
+
+connect(common_sys_config::get_inst(), SIGNAL(signal_common_sys_test()), this, SLOT(test()));
+
+```
+
 
 # 2 Q_INVOKABLE与invokeMethod
 
