@@ -72,6 +72,7 @@ connect(tasks, SIGNAL(signal_usb_flash_list()),this, SLOT(on_usb_flash_list()));
 
 ```
 函数的第一个和第三个函数分别代表发送信号和接受信号并相应槽函数的对象，其实connet函数还有第五个参数
+
 1、Qt::AutoConnection： 默认值，使用这个值则连接类型会在信号发送时决定。如果接收者和发送者在同一个线程，则自动使用Qt::DirectConnection类型。如果接收者和发送者不在一个线程，则自动使用Qt::QueuedConnection类型。
 
 2、Qt::DirectConnection：槽函数会在信号发送的时候直接被调用，槽函数运行于信号发送者所在线程。效果看上去就像是直接在信号发送位置调用了槽函数。这个在多线程环境下比较危险，可能会造成奔溃。
@@ -86,6 +87,7 @@ connect(tasks, SIGNAL(signal_usb_flash_list()),this, SLOT(on_usb_flash_list()));
 ![title](../../.local/static/2019/2/0/20180525165537440.1553403428453.png)
 
 **子线程和子线程**
+
 此处子线程和子线程我主要说明两种，一种是两个子线程都在主线程中进行实例化，并且在使用connect函数前均实例化完成，此时，两个子线程间是可以通信的，范例如下：
 ```c++
     auto qthread_back   = new QThread;
@@ -144,10 +146,15 @@ connect(common_sys_config::get_inst(), SIGNAL(signal_common_sys_test()), this, S
 common_sys_config::get_inst()->send_test();
 ```
 上述代码中，接受信号的类是thread_venc,需要发送信号的类是thread_fuse，从两者的函数功能来看，明显不可能全部实例化在同一个主线程中，所以通过全局的单例类来进行以此信号的转播，需要注意的是，槽函数所在的类中不能存在耗时函数，比如while循环，否则此方式需要使用五种连接方式中的Qt::DirectConnection，可是此方式对于多线程的Qt来说过于危险，轻则丢失信号，
-重则程序崩溃，所以此时一定要弃用while，经过验证，使用QTimer的定时器，到时后触发槽函数运行程序可以和while相似的效果，而且使用安全的Qt::QueuedConnection即可进行相应
+重则程序崩溃，所以此时一定要弃用while，经过验证，使用QTimer的定时器，到时后触发槽函数运行程序可以和while相似的效果，而且使用安全的Qt::QueuedConnection即可进行响应
 
 # 2 Q_INVOKABLE与invokeMethod
 
+代码直接上面就可以，关键在发送信号的部分：
+```c++
+
+
+```
 
 直连和qude都不行
 # 3 事件驱动
