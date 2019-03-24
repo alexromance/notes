@@ -86,7 +86,19 @@ connect(tasks, SIGNAL(signal_usb_flash_list()),this, SLOT(on_usb_flash_list()));
 ![title](../../.local/static/2019/2/0/20180525165537440.1553403428453.png)
 
 **子线程和子线程**
-此处子线程和子线程我主要说明两种，一种是两个子线程都在主线程中进行实例化，并且在使用connect函数前均实例化完成，此时，两个子线程间是可以通信的，范例可以借鉴的就是上述代码中用来新建线程的方式，将
+此处子线程和子线程我主要说明两种，一种是两个子线程都在主线程中进行实例化，并且在使用connect函数前均实例化完成，此时，两个子线程间是可以通信的，范例如下：
+```c++
+    auto qthread_back   = new QThread;
+    auto tasks          = new thread_complex_task;
+    tasks->moveToThread(qthread_back);
+    connect(tasks, SIGNAL(signal_change_time()), this, SLOT(on_change_time_function()));
+    connect(tasks, SIGNAL(signal_usb_status()), this, SLOT(on_recvs_usb()));
+    connect(tasks, SIGNAL(signal_usb_flash_list()), this, SLOT(on_usb_flash_list()));
+    qthread_back->start();
+
+```
+此方法中qthread_back和tasks间就是典型的两个子线程进行了通信，然而在近期的项目中需要的不是这么简单的子线程通信，因为不可能所有需要进行通信
+
 # 2 Q_INVOKABLE与invokeMethod
 
 # 3 事件驱动
