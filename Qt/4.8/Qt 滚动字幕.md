@@ -75,6 +75,7 @@ ui->label->setText(m_labelTitle.mid(pos)+
 原文：https://blog.csdn.net/toby54king/article/details/78636704 
 版权声明：本文为博主原创文章，转载请附上博文链接！
 ```
-![title](https://i.loli.net/2019/03/24/5c96fb10dd84f.gif)
+
+![title](../../.local/static/2019/2/0/20171126123454054.1553398923043.gif)
 
 
