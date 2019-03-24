@@ -164,7 +164,7 @@ Q_INVOKABLE void comm_test(){
 };
 
 ```
-**此方式需要注意的是，无论是Qt::DirectConnection还是Qt::QueuedConnection，只要槽函数所在的线程中存在耗时操作，槽函数均不进行响应**
+**此方式需要注意的是，无论是Qt::DirectConnection还是Qt::QueuedConnection，只要槽函数所在的线程中存在耗时操作，槽函数均不进行响应，Q_INVOKABLE与QMetaObject::invokeMethod均由元对象系统唤起。这一机制在Qt C++/QML混合编程，跨线程编程，Qt Service Framework 以及 Qt/ HTML5混合编程以及里广泛使用。**
 
 # 3 事件驱动
 
