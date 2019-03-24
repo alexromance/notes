@@ -99,15 +99,13 @@ connect(tasks, SIGNAL(signal_usb_flash_list()),this, SLOT(on_usb_flash_list()));
 ```
 此方法中qthread_back和tasks间就是典型的两个子线程进行了通信，然而在近期的项目中需要的不是这么简单的子线程通信，因为不可能所有需要进行通信的子线程都在主线程进行初始化，这个很明显是不可能的，所以需要使用如下的方式：
 ```c++
-
+//全局的单例类函数
 #ifndef GLOBAL_SET_H
 #define GLOBAL_SET_H
-
 #include <QObject>
 #include <QMutex>
 #include <QStringList>
 #include <QReadWriteLock>
-
 #include "common_sys_struct.h"
 class common_sys_config : public QObject
 {
@@ -116,7 +114,9 @@ public:
     static  common_sys_config   *get_inst();
     static  QReadWriteLock      *get_lock();
     static  QReadWriteLock      *get_vdec_lock();
-    void    send_test();
+    void    send_test(){
+	emit signal_common_sys_test;
+};
 
 private:
     explicit                    common_sys_config(QObject *parent = nullptr);
@@ -137,10 +137,13 @@ public slots:
 };
 #endif // GLOBAL_SET_H
 
+//目标中需要接收信号的类
 connect(common_sys_config::get_inst(), SIGNAL(signal_common_sys_test()), this, SLOT(test()));
 
+//目标中需要发送信号的类
+common_sys_config::get_inst()->send_test();
 ```
-
+上述代码中，接受信号
 
 # 2 Q_INVOKABLE与invokeMethod
 
