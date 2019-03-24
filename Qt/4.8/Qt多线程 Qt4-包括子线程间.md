@@ -63,14 +63,15 @@ public slots:
 
 代码已经写完，现在开始正餐
 
-**主线程和子线程**
+**主线程和子线程之间**
 ```c++
-    auto tasks          = new thread_complex_task;
-    connect(tasks, SIGNAL(signal_change_time()), this, SLOT(on_change_time_function()));
-    connect(tasks, SIGNAL(signal_usb_status()), this, SLOT(on_recvs_usb()));
-    connect(tasks, SIGNAL(signal_usb_flash_list()), this, SLOT(on_usb_flash_list()));
+auto tasks          = new thread_complex_task;
+connect(tasks, SIGNAL(signal_change_time()),   this, SLOT(on_change_time_function()));
+connect(tasks, SIGNAL(signal_usb_status()),    this, SLOT(on_recvs_usb()));
+connect(tasks, SIGNAL(signal_usb_flash_list()),this, SLOT(on_usb_flash_list()));
 
 ```
+函数的第一个和第三个函数分别代表发送信号和接受信号并相应槽函数
 
 
 **子线程和子线程**
