@@ -157,20 +157,15 @@ common_sys_config::get_inst()->send_test();
 QMetaObject::invokeMethod(common_sys_config::get_inst(), "comm_test", Qt::QueuedConnection);
 
 ```
-使用Q_INVOKABLE来修饰成员函数，目的在于被修饰的成员函数能够被元对象系统所唤起。
+使用Q_INVOKABLE来修饰成员函数，目的在于被修饰的成员函数能够被元对象系统所唤起：
 ```c++
 Q_INVOKABLE void comm_test(){
 	emit signal_common_sys_test();
 };
 
 ```
+**此方式需要注意的是，无论是Qt::DirectConnection还是Qt::QueuedConnection，只要槽函数所在的线程中存在耗时操作，槽函数均不进行响应**
 
-
-
-直连和qude都不行
 # 3 事件驱动
 
-
-
-
-**4 注意不可以有while等耗时操作，可以使用qtimer方式进行驱动**
+未经实验，参考https://blog.csdn.net/Amnes1a/article/details/64906910
