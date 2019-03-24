@@ -82,6 +82,8 @@ connect(tasks, SIGNAL(signal_usb_flash_list()),this, SLOT(on_usb_flash_list()));
 
 5、Qt::UniqueConnection：这个flag可以通过按位或（|）与以上四个结合在一起使用。当这个flag设置时，当某个信号和槽已经连接时，再进行重复的连接就会失败。也就是避免了重复连接。
 
+不管是使用那种方式，要想在子线程里面触发的信号的槽函数在子线程执行，信号槽连接必须使用DirectConnection 方式；
+![title](../../.local/static/2019/2/0/20180525165537440.1553403428453.png)
 
 **子线程和子线程**
 # 2 Q_INVOKABLE与invokeMethod
