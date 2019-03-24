@@ -117,7 +117,7 @@ public:
     static  QReadWriteLock      *get_lock();
     static  QReadWriteLock      *get_vdec_lock();
     void    send_test(){
-	emit signal_common_sys_test;
+	emit signal_common_sys_test();
 };
 
 private:
@@ -131,7 +131,9 @@ private:
     //解码播放部分读写锁
     static QReadWriteLock       *m_global_vdec_rwlock;
 
-Q_INVOKABLE void comm_test();
+Q_INVOKABLE void comm_test(){
+	emit signal_common_sys_test();
+};
 
 signals:
     void    signal_common_sys_test();
@@ -150,11 +152,20 @@ common_sys_config::get_inst()->send_test();
 
 # 2 Q_INVOKABLE与invokeMethod
 
-代码直接上面就可以，关键在发送信号的部分：
+代码直接上面就有，需要强调两部分，发送信号的部分：
 ```c++
-
+QMetaObject::invokeMethod(common_sys_config::get_inst(), "comm_test", Qt::QueuedConnection);
 
 ```
+使用Q_INVOKABLE来修饰成员函数，目的在于被修饰的成员函数能够被元对象系统所唤起。
+```c++
+Q_INVOKABLE void comm_test(){
+	emit signal_common_sys_test();
+};
+
+```
+
+
 
 直连和qude都不行
 # 3 事件驱动
