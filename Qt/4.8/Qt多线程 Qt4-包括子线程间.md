@@ -143,9 +143,12 @@ connect(common_sys_config::get_inst(), SIGNAL(signal_common_sys_test()), this, S
 //目标中需要发送信号的类
 common_sys_config::get_inst()->send_test();
 ```
-上述代码中，接受信号的类是thread_venc,需要发送信号的类是thread_fuse，从两者的函数功能来看，明显不可能全部实例化在同一个主线程中，所以通过全局的单例类来进行以此信号的转播，需要注意的是，槽函数所在的类中不可能存在耗时函数，比如while循环，否则此方式
+上述代码中，接受信号的类是thread_venc,需要发送信号的类是thread_fuse，从两者的函数功能来看，明显不可能全部实例化在同一个主线程中，所以通过全局的单例类来进行以此信号的转播，需要注意的是，槽函数所在的类中不能存在耗时函数，比如while循环，否则此方式需要使用五种连接方式中的Qt::DirectConnection，可是此方式对于多线程的Qt来说过于危险，轻则丢失信号，
+重则程序崩溃，所以此时一定要弃用while，经过验证，使用QTimer的定时器，到时后触发槽函数运行程序可以和while相似的效果，而且使用安全的Qt::QueuedConnection即可进行相应
 
 # 2 Q_INVOKABLE与invokeMethod
+
+
 直连和qude都不行
 # 3 事件驱动
 
