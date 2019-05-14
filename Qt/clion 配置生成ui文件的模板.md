@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+```<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
     <class>${NAME}</class>
     <widget class="QWidget" name="${NAME}">
@@ -17,3 +17,5 @@
     <resources/>
     <connections/>
 </ui>
+
+```
