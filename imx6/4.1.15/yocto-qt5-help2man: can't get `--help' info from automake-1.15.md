@@ -28,5 +28,15 @@ NOTE: Tasks Summary: Attempted 100 tasks of which 95 didn't need to be rerun and
 修改makefile源代码：
 ```c++
 /home/alex/nfs_share/IMX_Platform/IMX6D/sdk-4.14/bld-fb/tmp/work/x86_64-linux/automake-native/1.15.1-r0/build/Makefile
-
+	[...省略]
+        doc/aclocal-$(APIVERSION).1: $(aclocal_script) lib/Automake/Config.pm
+                $(update_mans) aclocal-$(APIVERSION)
+        doc/automake-$(APIVERSION).1: $(automake_script) lib/Automake/Config.pm
+                $(update_mans) automake-$(APIVERSION) --no-discard-stderr
+        [...省略]
 ```
+
+参考文章：
+
+
+https://www.cnblogs.com/zengjfgit/p/9178571.html
