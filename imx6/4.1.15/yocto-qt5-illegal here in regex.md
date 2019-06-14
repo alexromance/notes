@@ -31,8 +31,22 @@ WARNING: pigz-native-2.3.3-r0 do_fetch: Failed to fetch URL http://zlib.net/pigz
 修改automake源代码
 
 ```c++
+        # substitute_ac_subst_variables ($TEXT)
+        # -------------------------------------
+        # Replace any occurrence of ${FOO} in $TEXT by @FOO@ if FOO is an AC_SUBST
+        # variable.
+        sub substitute_ac_subst_variables
+        {
+          my ($text) = @_;
+          # $text =~ s/\${([^ \t=:+{}]+)}/substitute_ac_subst_variables_worker ($1)/ge;
+          $text =~ s/\$[{]([^ \t=:+{}]+)}/substitute_ac_subst_variables_worker ($1)/ge;
+          return $text;
+        }
+```
 
-`
+由于参考文章没写清楚具体路径，故只能grep到的全部进行修改。
+
+
 参考文章：
 
 https://www.cnblogs.com/zengjfgit/p/9178523.html
