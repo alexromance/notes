@@ -28,7 +28,11 @@ WARNING: pigz-native-2.3.3-r0 do_fetch: Failed to fetch URL http://zlib.net/pigz
 解决：
 
 
+修改automake源代码
 
+```c++
+
+`
 参考文章：
 
 https://www.cnblogs.com/zengjfgit/p/9178523.html
