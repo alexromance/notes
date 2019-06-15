@@ -21,10 +21,7 @@ Waiting for 0 running tasks to finish:
 解决：
 
 
-在/etc/perl中添加缺失的文件
-
-
-文件如下：
+在/etc/perl中添加缺失的文件，文件如下：
 
 
 ```c++
