@@ -29,5 +29,12 @@ do_fetchall[recideptask] = "do_${BB_DEFAULT_TASK}"
 do_fetchall() {
 	:
 }
-
 ```
+
+将此部分配置加入
+
+```c++
+{yocto_path}/sources/poky/meta/classes/utility-tasks.bbclass
+```
+
+此时，运行bitbake xxxx -c fetchall即可生效。
