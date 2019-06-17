@@ -34,3 +34,9 @@ WARNING: libxslt-native-1.1.28-r0 do_fetch: Failed to fetch URL ftp://xmlsoft.or
 {yocto_path}/build-fb/tmp/work/x86_64-linux/qemu-native/2.5.0-r1/qemu-2.5.0/util/memfd.c
 ```
 文件中memfd_create函数名重命名为tmp_memfd_create
+
+
+参考文章：
+
+
+https://blog.csdn.net/weixin_42421766/article/details/82982259
