@@ -27,6 +27,7 @@ ERROR: Logfile of failure stored in: /home/alex/nfs_share/IMX_Platform/IMX6D/sdk
 ERROR: Task 9 (/home/alex/nfs_share/IMX_Platform/IMX6D/sdk/sources/meta-fsl-bsp-release/imx/meta-sdk/recipes-fsl/images/fsl-image-qt5.bb, do_rootfs) failed with exit code '1'
 ```
 
+**无法解决此问题，随意更换4.14.98新内核版本进行编译**
 
 参考文章：
 https://patchwork.openembedded.org/patch/123001/
