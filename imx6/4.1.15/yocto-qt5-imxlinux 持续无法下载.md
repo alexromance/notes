@@ -21,7 +21,14 @@ git -c core.fsyncobjectfiles=0 clone --bare --mirror git://git.freescale.com/imx
 ```
 
 注意最后一行，给出了当前克隆路径以及目标文件位置和名字等信息。
-使用如下命令进行则
+使用如下命令进行则完成fetchall：
+
+```c++
+git clone git://git.freescale.com/imx/linux-imx.git -b imx_4.1.15_2.0.0_ga git.freescale.com.imx.linux-imx.git
+正克隆到 'git.freescale.com.imx.linux-imx.git'...
+```
+
+需要注意的是，此时这条命令是在最后一行的相对路径中执行的。
 
 参考文章：
 
