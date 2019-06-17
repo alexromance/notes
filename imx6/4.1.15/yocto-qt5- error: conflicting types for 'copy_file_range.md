@@ -657,3 +657,17 @@ Waiting for 0 running tasks to finish:
 
 解决：
 
+```c++
+* ~/nfs_share/IMX_Platform/IMX6D/sdk/bld-fb/tmp/work/x86_64-linux/e2fsprogs-native/1.42.99+1.43+gitAUTOINC+0f26747167-r0/git/misc *
+ alex→ $ diff create_inode.c create_inode.c.bak 
+19c19
+< /** #include <unistd.h> */
+---
+> #include <unistd.h>
+* ~/nfs_share/IMX_Platform/IMX6D/sdk/bld-fb/tmp/work/x86_64-linux/e2fsprogs-native/1.42.99+1.43+gitAUTOINC+0f26747167-r0/git/misc *
+ alex→ $ 
+```
+
+参考文章：
+
+https://blog.csdn.net/weixin_42421766/article/details/82986672
