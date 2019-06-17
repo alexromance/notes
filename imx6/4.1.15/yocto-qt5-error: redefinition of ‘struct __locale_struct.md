@@ -183,3 +183,56 @@
 | ERROR: Function failed: do_compile (log file is located at /home/alex/nfs_share/IMX_Platform/IMX6D/sdk/bld-fb/tmp/work/x86_64-linux/cross-localedef-native/2.23-r0/temp/log.do_compile.94639)
 ```
 
+解决：
+
+在{yocto_path}/yocto/fsl-release-bsp/sources/poky/meta/recipes-core/glibc/cross-localedef-native_2.23.bb的patch文件列表中增加0001-Include-locale_t.h-compatibility-header.patch：
+
+```c++
+EGLIBCPATCHES = "\
+           file://0016-timezone-re-written-tzselect-as-posix-sh.patch \
+           file://0017-Remove-bash-dependency-for-nscd-init-script.patch \
+           file://0018-eglibc-Cross-building-and-testing-instructions.patch \
+           file://0019-eglibc-Help-bootstrap-cross-toolchain.patch \
+           file://0020-eglibc-cherry-picked-from.patch \
+           file://0021-eglibc-Clear-cache-lines-on-ppc8xx.patch \
+           file://0022-eglibc-Resolve-__fpscr_values-on-SH4.patch \
+           file://0023-eglibc-Install-PIC-archives.patch \
+           file://0025-eglibc-Forward-port-cross-locale-generation-support.patch \
+           file://0001-Include-locale_t.h-compatibility-header.patch \
+"
+```
+
+在{yocto_path}/sources/poky/meta/recipes-core/glibc/glibc路径下新建文件0001-Include-locale_t.h-compatibility-header.patch，文件内容如下：
+
+```c++
+From abfeb0cf4e3261a66a7a23abc9aed33c034c850d Mon Sep 17 00:00:00 2001
+From: Joshua Watt <Joshua.Watt@garmin.com>
+Date: Wed, 6 Dec 2017 13:26:19 -0600
+Subject: [PATCH] Include locale_t.h compatibility header
+
+Newer versions of glibc (since 2.26) moved the locale typedefs from
+xlocale.h to bits/types/locale_t.h. Create a compatibility header for
+these newer versions of glibc
+
+See f0be25b6336db7492e47d2e8e72eb8af53b5506d in glibc
+
+Upstream-Status: Inappropriate
+---
+ locale/bits/types/locale_t.h | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 locale/bits/types/locale_t.h
+
+diff --git a/locale/bits/types/locale_t.h b/locale/bits/types/locale_t.h
+new file mode 100644
+index 0000000000..b519a6c5f8
+--- /dev/null
++++ b/locale/bits/types/locale_t.h
+@@ -0,0 +1 @@
++#include <xlocale.h>
+-- 
+2.14.3
+```
+
+参考文章：
+
+https://blog.csdn.net/weixin_42421766/article/details/82984648
