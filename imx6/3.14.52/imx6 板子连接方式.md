@@ -60,5 +60,22 @@ wlp3s0: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
 ifconfig enp0s20f0u1c2 192.168.7.5 up
 ```
 
-此时，观察
+此时，观察网卡：
+
+![title](../../.local/static/2019/5/3/5.1561541513735.png)
+
+```shell
+alex@al-1:~$ ping 192.168.7.2
+PING 192.168.7.2 (192.168.7.2) 56(84) bytes of data.
+64 bytes from 192.168.7.2: icmp_seq=1 ttl=64 time=0.366 ms
+64 bytes from 192.168.7.2: icmp_seq=2 ttl=64 time=0.382 ms
+64 bytes from 192.168.7.2: icmp_seq=3 ttl=64 time=0.366 ms
+^C
+--- 192.168.7.2 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2036ms
+rtt min/avg/max/mdev = 0.366/0.371/0.382/0.017 ms
+alex@al-1:~$ 
+```
+
+成功！
 
