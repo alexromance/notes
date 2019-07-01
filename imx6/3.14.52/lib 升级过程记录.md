@@ -119,8 +119,23 @@ root@imx6dlsabresd:/mnt/imx6d/test_lib# cp libanl.so.1 /lib
 cp: relocation error: /lib/libm.so.6: symbol __strtod_nan version GLIBC_PRIVATE not defined in file libc.so.6 with link time reference
 ```
 
-此时，已经没有
+现象：
 
-**结果1：** 各种报错
+```shell
+root@imx6dlsabresd:/mnt/imx6d/test_lib# cp libanl.so.1 /lib
+cp: relocation error: /lib/libm.so.6: symbol __strtod_nan version GLIBC_PRIVATE not defined in file libc.so.6 with link time reference
+```
+
+解决：
+
+LD_PRELOAD=/lib/libc-2.27.so ln -sf /lib/libc-2.27.so /lib/libc.so.6
+
+参考文章：
+
+https://blog.51cto.com/zhaoyong/194327
+
+**结果1：** 各种报错，感觉无法进行下去了。
+
+**方式2：**直接打包编译好的
 
 
