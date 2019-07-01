@@ -47,7 +47,29 @@ root@imx6dlsabresd:/mnt/imx6d# scp
 
 http://www.xuyanlinux.com/archives/142
 
-操作3：拷贝libm.so.6后报错
+操作3：拷贝libm.so.6软链接后程序报错
+
+```shell
+root@imx6dlsabresd:/lib# find . -name "*2.27*"
+./librt-2.27.so
+./libresolv-2.27.so
+./ld-2.27.so
+./libm-2.27.so
+./libanl-2.27.so
+./libnss_dns-2.27.so
+./libnss_compat-2.27.so
+./libc-2.27.so
+./libdl-2.27.so
+./libBrokenLocale-2.27.so
+./libnss_files-2.27.so
+./libnsl-2.27.so
+./libpthread-2.27.so
+./libutil-2.27.so
+./libcrypt-2.27.so
+```
+
+先在板子上查找出一直的2.27高版本的lib，一个一个对应着进行拷贝，
+
 
 **结果1：** 各种报错
 
