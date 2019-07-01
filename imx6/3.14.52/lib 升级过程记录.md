@@ -136,6 +136,69 @@ https://blog.51cto.com/zhaoyong/194327
 
 **结果1：** 各种报错，感觉无法进行下去了。
 
-**方式2：**直接打包编译好的
+**方式2：**直接打包编译好的高版本lib进行替换
+
+操作1：
+
+先把pc上的编译好的高版本lib进行打包。
+
+```shell
+* /opt/fsl-imx-fb/4.14-sumo/sysroots/cortexa9hf-neon-poky-linux-gnueabi *
+ alex→ $ tar -czvf /home/alex/nfs_share/all_test/imx6d/lib.tar.gz lib/
+lib/
+lib/libnss_mdns_minimal.so.2
+lib/libext2fs.so.2.4
+lib/libncursesw.so.5
+lib/librt-2.27.so
+lib/depmod.d/
+lib/depmod.d/search.conf
+lib/libblkid.so.1
+lib/libattr.so.1
+lib/libudev.so
+lib/libnss_hesiod-2.27.so
+lib/libdl.so.2
+lib/libsmartcols.so.1
+lib/libnss_compat.so.2
+lib/libext2fs.so.2
+lib/libnss_mdns6.so.2
+lib/libcidn-2.27.so
+lib/libnsl.so.1
+lib/librt.so.1
+lib/libz.so.1
+lib/libss.so.2
+lib/libudev.so.1
+lib/libm.so.6
+lib/libnss_db-2.27.so
+lib/libnss_nisplus.so.2
+lib/libmount.so.1.1.0
+lib/.debug/
+lib/.debug/libnss_mdns_minimal.so.2
+lib/.debug/libext2fs.so.2.4
+lib/.debug/librt-2.27.so
+lib/.debug/libnss_systemd.so.2
+lib/.debug/libnss_hesiod-2.27.so
+lib/.debug/libnss_mdns6.so.2
+lib/.debug/libcidn-2.27.so
+lib/.debug/libnss_db-2.27.so
+...
+lib/modules/4.14.98-imx_4.14.98_2.0.0_ga+g5d6cbeafb80c/
+lib/modules/4.14.98-imx_4.14.98_2.0.0_ga+g5d6cbeafb80c/modules.dep
+lib/modules/4.14.98-imx_4.14.98_2.0.0_ga+g5d6cbeafb80c/modules.softdep
+lib/modules/4.14.98-imx_4.14.98_2.0.0_ga+g5d6cbeafb80c/extra/
+lib/modules/4.14.98-imx_4.14.98_2.0.0_ga+g5d6cbeafb80c/extra/galcore.ko
+lib/modules/4.14.98-imx_4.14.98_2.0.0_ga+g5d6cbeafb80c/modules.alias
+lib/modules/4.14.98-imx_4.14.98_2.0.0_ga+g5d6cbeafb80c/modules.symbols
+lib/modules/4.14.98-imx_4.14.98_2.0.0_ga+g5d6cbeafb80c/modules.symbols.bin
+lib/modules/4.14.98-imx_4.14.98_2.0.0_ga+g5d6cbeafb80c/modules.dep.bin
+lib/modules/4.14.98-imx_4.14.98_2.0.0_ga+g5d6cbeafb80c/modules.order
+lib/modules/4.14.98-imx_4.14.98_2.0.0_ga+g5d6cbeafb80c/modules.alias.bin
+lib/modules/4.14.98-imx_4.14.98_2.0.0_ga+g5d6cbeafb80c/modules.builtin.bin
+lib/modules/4.14.98-imx_4.14.98_2.0.0_ga+g5d6cbeafb80c/modules.builtin
+lib/modules/4.14.98-imx_4.14.98_2.0.0_ga+g5d6cbeafb80c/modules.devname
+* /opt/fsl-imx-fb/4.14-sumo/sysroots/cortexa9hf-neon-poky-linux-gnueabi *
+ alex→ $ 
+```
+
+然后在板子上
 
 
