@@ -45,7 +45,9 @@ root@imx6dlsabresd:/mnt/imx6d# scp
 
 参考文章：
 
+http://www.xuyanlinux.com/archives/142
 
+操作3：拷贝libm.so.6后报错
 
 **结果1：** 各种报错
 
