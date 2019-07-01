@@ -199,6 +199,43 @@ lib/modules/4.14.98-imx_4.14.98_2.0.0_ga+g5d6cbeafb80c/modules.devname
  alex→ $ 
 ```
 
-然后在板子上
+然后在板子上进行直接解压替换：
+
+```shell
+root@imx6dlsabresd:/# tar -xzvf lib.tar.gz  
+lib/
+lib/libanl.so.1
+lib/libm.so.6
+lib/libcrypt-2.21.so
+lib/libutil.so.1
+lib/libpthread.so.0
+lib/libnsl-2.21.so
+lib/libpthread-2.21.so
+lib/librt-2.21.so
+lib/libblkid.so.1.1.0
+lib/libnss_dns-2.21.so
+...
+lib/libtinfo.so.5
+lib/ld-linux-armhf.so.3
+lib/ld-2.21.so
+lib/libc-2.21.so
+lib/librt.so.1
+lib/libuuid.so.1
+lib/libanl-2.21.so
+lib/libdl.so.2
+lib/libBrokenLocale-2.21.so
+lib/libtinfo.so.5.9
+lib/libnss_compat-2.21.so
+lib/libBrokenLocale.so.1
+lib/libutil-2.21.so
+lib/libblkid.so.1
+lib/libnsl.so.1
+lib/libresolv-2.21.so
+lib/libdl-2.21.so
+lib/libcrypt.so.1
+```
+
+**结果2：**完美运行
+
 
 
