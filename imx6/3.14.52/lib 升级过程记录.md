@@ -68,8 +68,58 @@ root@imx6dlsabresd:/lib# find . -name "*2.27*"
 ./libcrypt-2.27.so
 ```
 
-先在板子上查找出一直的2.27高版本的lib，一个一个对应着进行拷贝，
+先在板子上查找出一直的2.27高版本的lib，然后从pc上一个一个对应着高版本的进行拷贝。
 
+pc:
+
+```shell
+* /opt/fsl-imx-fb/4.14-sumo/sysroots/cortexa9hf-neon-poky-linux-gnueabi/lib *
+ alex→ $ cp ld-linux-armhf.so.3 ~/nfs_share/all_test/imx6d/
+a.out           opengles2_test  test_lib/       test_usr_lib/
+* /opt/fsl-imx-fb/4.14-sumo/sysroots/cortexa9hf-neon-poky-linux-gnueabi/lib *
+ alex→ $ cp ld-linux-armhf.so.3 ~/nfs_share/all_test/imx6d/test_lib/
+* /opt/fsl-imx-fb/4.14-sumo/sysroots/cortexa9hf-neon-poky-linux-gnueabi/lib *
+ alex→ $ cp librt.so.1 ~/nfs_share/all_test/imx6d/test_lib/
+* /opt/fsl-imx-fb/4.14-sumo/sysroots/cortexa9hf-neon-poky-linux-gnueabi/lib *
+ alex→ $ cp libresolv.so.2 ~/nfs_share/all_test/imx6d/test_lib/
+* /opt/fsl-imx-fb/4.14-sumo/sysroots/cortexa9hf-neon-poky-linux-gnueabi/lib *
+ alex→ $ cp libm.so.6 ~/nfs_share/all_test/imx6d/test_lib/
+* /opt/fsl-imx-fb/4.14-sumo/sysroots/cortexa9hf-neon-poky-linux-gnueabi/lib *
+ alex→ $ cp libanl
+libanl-2.27.so  libanl.so.1     
+* /opt/fsl-imx-fb/4.14-sumo/sysroots/cortexa9hf-neon-poky-linux-gnueabi/lib *
+ alex→ $ cp libanl
+libanl-2.27.so  libanl.so.1     
+* /opt/fsl-imx-fb/4.14-sumo/sysroots/cortexa9hf-neon-poky-linux-gnueabi/lib *
+ alex→ $ cp libanl.so.1 ~/nfs_share/all_test/imx6d/test_lib/
+* /opt/fsl-imx-fb/4.14-sumo/sysroots/cortexa9hf-neon-poky-linux-gnueabi/lib *
+ alex→ $ cp libnss_dns
+libnss_dns-2.27.so  libnss_dns.so.2     
+* /opt/fsl-imx-fb/4.14-sumo/sysroots/cortexa9hf-neon-poky-linux-gnueabi/lib *
+ alex→ $ cp libnss_dns.so.2 ~/nfs_share/all_test/imx6d/test_
+test_lib/     test_usr_lib/ 
+* /opt/fsl-imx-fb/4.14-sumo/sysroots/cortexa9hf-neon-poky-linux-gnueabi/lib *
+ alex→ $ cp libnss_dns.so.2 ~/nfs_share/all_test/imx6d/test_lib/
+* /opt/fsl-imx-fb/4.14-sumo/sysroots/cortexa9hf-neon-poky-linux-gnueabi/lib *
+ alex→ $ cp libnss_compat.so.2 ~/nfs_share/all_test/imx6d/test_lib/
+* /opt/fsl-imx-fb/4.14-sumo/sysroots/cortexa9hf-neon-poky-linux-gnueabi/lib *
+ alex→ $ cp libnss_compat.so.2 ~/nfs_share/all_test/imx6d/test_lib/
+* /opt/fsl-imx-fb/4.14-sumo/sysroots/cortexa9hf-neon-poky-linux-gnueabi/lib *
+ alex→ $ cp libpthread.so.0 ~/nfs_share/all_test/imx6d/test_lib/
+```
+
+板子：
+
+```shell
+root@imx6dlsabresd:/mnt/imx6d/test_lib# cp ld-linux-armhf.so.3 /lib
+root@imx6dlsabresd:/mnt/imx6d/test_lib# cp librt.so.1 /lib/
+root@imx6dlsabresd:/mnt/imx6d/test_lib# cp libresolv.so.2 /lib
+root@imx6dlsabresd:/mnt/imx6d/test_lib# cp libm.so.6 /lib
+root@imx6dlsabresd:/mnt/imx6d/test_lib# cp libanl.so.1 /lib
+cp: relocation error: /lib/libm.so.6: symbol __strtod_nan version GLIBC_PRIVATE not defined in file libc.so.6 with link time reference
+```
+
+此时，已经没有
 
 **结果1：** 各种报错
 
