@@ -19,3 +19,12 @@
 -javaagent:/home/alex/professional/clion_keygen/jetbrains-agent/jetbrains-agent.jar
 -Dsun.tools.attach.tmp.only=true
 ```
+
+```shell
+* ~ *
+ alex→ $ sudo vim /etc/sysctl.conf 
+[sudo] alex 的密码：
+
+fs.inotify.max_user_watches = 524288
+```
+
