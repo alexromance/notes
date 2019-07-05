@@ -26,5 +26,8 @@
 [sudo] alex 的密码：
 
 fs.inotify.max_user_watches = 524288
+
+
+sudo sysctl -p --system
 ```
 
