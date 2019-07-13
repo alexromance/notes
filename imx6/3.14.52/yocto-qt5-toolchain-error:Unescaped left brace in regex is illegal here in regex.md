@@ -51,3 +51,8 @@ Log data follows:
  alex→ $ 
 ```
 
+总的来说，都是把不支持的用法 **{**  用  **[{]**  进行一下修改
+
+参考文章：
+
+https://www.cnblogs.com/zengjfgit/p/9178523.html
