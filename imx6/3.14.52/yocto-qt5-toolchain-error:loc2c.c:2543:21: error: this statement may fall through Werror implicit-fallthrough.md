@@ -42,6 +42,10 @@ ERROR: Task 3982 (virtual:native:/home/alex/imx6/6d/sdk/sources/poky/meta/recipe
 ```
 
 解决：
-先删除configure，然后去掉-Werror选项
+
+先删掉此次出错的binuntils包的stamp文件中的doconfigure 和do complie ，然后去掉-Werror选项
 
 ```shell
+find . -iname "makefile*" | xargs sed -i "s/-Werror//g"
+```
+
