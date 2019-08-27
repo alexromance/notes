@@ -120,6 +120,14 @@ export CXX="arm-poky-linux-gnueabi-g++  -march=armv7-a -mfloat-abi=hard -mfpu=ne
 
 ![title](../../.local/static/2019/7/2/test_c.1566896421922.jpg)
 
+然后分别用v400(hi3521-glibc) , v300(hi3521-ulic), x100(hi3556)进行验证，得到如下结果：
+
+![title](../../.local/static/2019/7/2/v300-v400.1566896552308.jpg)
+
+![title](../../.local/static/2019/7/2/x100.1566896563413.png)
+
+由此即可以分析问题得到，此时确实是由于ulibc的裁减造成的
+
 **参考文章：**
 
 https://tensorflow.google.cn/lite/guide/build_rpi?hl=en
