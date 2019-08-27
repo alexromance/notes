@@ -2,6 +2,9 @@
 
 ```shell
 
+* ~/google/tensorflow *
+ alex→ $ git clone https://github.com/tensorflow/tensorflow
+```
 
 2 安装所需的软件包
 
@@ -19,7 +22,7 @@
  alex→ $ vim /opt/fsl-imx-fb/3.14.52-1.1.1/environment-setup-cortexa9hf-vfp-neon-poky-linux-gnueabi 
 ```
 
-文件中的此行是重点
+文件中的此行是重点，如下所示：
 
 ```shell
 
@@ -106,6 +109,10 @@ export CXX="arm-poky-linux-gnueabi-g++  -march=armv7-a -mfloat-abi=hard -mfpu=ne
 * ~/google/tensorflow *
  alex→ $ ./tensorflow/lite/tools/make/build_imx_lib.sh 
 ```
+
+**编译过程的报错排除：**
+
+最开始使用的是海思的35xx的
 
 **参考文章：**
 
