@@ -137,7 +137,8 @@ export CXX="arm-poky-linux-gnueabi-g++  -march=armv7-a -mfloat-abi=hard -mfpu=ne
  alex→ $ 
 ```
 
-证明可以
+证明可以编译通过，遂使用imx系列的进行此次编译。
+
 
 **参考文章：**
 
