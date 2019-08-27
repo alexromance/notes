@@ -114,7 +114,11 @@ export CXX="arm-poky-linux-gnueabi-g++  -march=armv7-a -mfloat-abi=hard -mfpu=ne
 
 最开始使用的是海思的35xx的编译器，但是使用的是基于ulibc的300系列，导致报错如下：
 
+![title](../../.local/static/2019/7/2/tensorflow_error.1566896275150.png)
 
+遂开始查找问题，搜索一圈后发现是在time.h中定义的此函数。此时开始怀疑是否是由于ulibc的裁减造成的问题，所以写了如下的文件进行分别验证。
+
+![title](../../.local/static/2019/7/2/test_c.1566896421922.jpg)
 
 **参考文章：**
 
