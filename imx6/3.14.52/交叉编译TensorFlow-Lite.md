@@ -126,7 +126,7 @@ export CXX="arm-poky-linux-gnueabi-g++  -march=armv7-a -mfloat-abi=hard -mfpu=ne
 
 ![title](../../.local/static/2019/7/2/x100.1566896563413.png)
 
-由此即可以分析问题得到，此时确实是由于ulibc的裁减造成的问题。而且却是基于glibc的可以编译过此处报错，且x100的编译器肯定是基于ulibc的。然后又使用了imx的交叉编译工具链进行验证，结果如下：
+由此即可以分析问题得到，此时确实是由于ulibc的裁减造成的问题。而且确实是基于glibc的可以编译过此处报错，且x100的编译器肯定是基于ulibc的。然后又使用了imx的交叉编译工具链进行验证，结果如下：
 
 ```shell
 * ~/professional/test *
