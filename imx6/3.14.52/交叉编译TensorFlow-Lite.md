@@ -1,5 +1,10 @@
 1 首先安装交叉编译工具链
 
+2 安装所需的软件包
+
+```shell
+
+
 2 查看此版本通用的编译选项，此处对于imx来说是查看source的environment文件。
 
 ```shell
@@ -35,5 +40,58 @@ export CXX="arm-poky-linux-gnueabi-g++  -march=armv7-a -mfloat-abi=hard -mfpu=ne
  alex→ $ 
 ```
 
-4 复制树梅派的
+4 复制树梅派的编译配置文件，修改如下：
+
+```shell
+
+* ~/google/tensorflow/tensorflow/lite/tools/make *
+ alex→ $ cp targets/rpi_makefile.inc targets/imx_makefile.inc 
+
+
+
+* ~/google/tensorflow/tensorflow/lite/tools/make *
+ alex→ $ diff targets/rpi_makefile.inc targets/imx_makefile.inc 
+1,2c1,2
+< # Settings for Raspberry Pi.
+< ifeq ($(TARGET),rpi)
+---
+> # Settings for imx.
+> ifeq ($(TARGET),imx)
+6c6
+<   TARGET_TOOLCHAIN_PREFIX := arm-linux-gnueabihf-
+---
+>   TARGET_TOOLCHAIN_PREFIX := arm-poky-linux-gnueabi-
+10,14c10,14
+< 			-march=armv7-a \
+<       -mfpu=neon-vfpv4 \
+<       -funsafe-math-optimizations \
+<       -ftree-vectorize \
+<       -fPIC
+---
+>       -march=armv7-a \
+>       -mfloat-abi=hard \
+>       -mfpu=neon \
+>       -mtune=cortex-a9 \
+>       --sysroot=/opt/fsl-imx-fb/3.14.52-1.1.1/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi
+18,21c18,21
+<       -mfpu=neon-vfpv4 \
+<       -funsafe-math-optimizations \
+<       -ftree-vectorize \
+<       -fPIC
+---
+>       -mfloat-abi=hard \
+>       -mfpu=neon \
+>       -mtune=cortex-a9 \
+>       --sysroot=/opt/fsl-imx-fb/3.14.52-1.1.1/sysroots/cortexa9hf-vfp-neon-poky-linux-gnueabi
+58,59c58,59
+<     -ldl
+< 
+---
+>     -ldl \
+>     -lrt
+* ~/google/tensorflow/tensorflow/lite/tools/make *
+ alex→ $ 
+```
+
+
 
