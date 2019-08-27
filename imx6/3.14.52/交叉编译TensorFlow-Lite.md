@@ -112,7 +112,9 @@ export CXX="arm-poky-linux-gnueabi-g++  -march=armv7-a -mfloat-abi=hard -mfpu=ne
 
 **编译过程的报错排除：**
 
-最开始使用的是海思的35xx的
+最开始使用的是海思的35xx的编译器，但是使用的是基于ulibc的300系列，导致报错如下：
+
+
 
 **参考文章：**
 
