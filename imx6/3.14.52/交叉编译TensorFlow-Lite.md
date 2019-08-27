@@ -1,11 +1,17 @@
-1 首先安装交叉编译工具链
+1 首先安装交叉编译工具链并下载源码
+
+```shell
+
 
 2 安装所需的软件包
 
 ```shell
 
+* ~/google/tensorflow *
+ alex→ $ ./tensorflow/lite/tools/make/download_dependencies.sh
+```
 
-2 查看此版本通用的编译选项，此处对于imx来说是查看source的environment文件。
+3 查看此版本通用的编译选项，此处对于imx来说是查看source的environment文件。
 
 ```shell
 
@@ -24,7 +30,7 @@ export CXX="arm-poky-linux-gnueabi-g++  -march=armv7-a -mfloat-abi=hard -mfpu=ne
 
 由此处得知我们需要更改的特殊编译选项。
 
-3 复制树梅派的配置文件，修改如下：
+4 复制树梅派的配置文件，修改如下：
 
 ```shell
 * ~/google/tensorflow/tensorflow/lite/tools/make *
@@ -40,7 +46,7 @@ export CXX="arm-poky-linux-gnueabi-g++  -march=armv7-a -mfloat-abi=hard -mfpu=ne
  alex→ $ 
 ```
 
-4 复制树梅派的编译配置文件，修改如下：
+5 复制树梅派的编译配置文件，修改如下：
 
 ```shell
 
@@ -93,5 +99,15 @@ export CXX="arm-poky-linux-gnueabi-g++  -march=armv7-a -mfloat-abi=hard -mfpu=ne
  alex→ $ 
 ```
 
+6 开始编译。
 
+```shell
+
+* ~/google/tensorflow *
+ alex→ $ ./tensorflow/lite/tools/make/build_imx_lib.sh 
+```
+
+**参考文章：**
+
+https://tensorflow.google.cn/lite/guide/build_rpi?hl=en
 
